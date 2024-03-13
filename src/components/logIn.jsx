@@ -40,7 +40,6 @@ const Login = () => {
         }
       });
       const response = await res.json();
-      console.log(response.message);
       if (response.message === "Found!") {
         Cookies.set("token", response.token);
         setRedirect(true)

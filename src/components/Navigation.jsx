@@ -12,8 +12,6 @@ export default function Navigation() {
     setInterval(() => {
         if(!Cookies.get("token") && typeof window !== 'undefined' && user.username) window?.location.reload();
     }, 2500);
-
-    console.log(user);
     useEffect(() => {
       socket.connect()
     

@@ -70,10 +70,8 @@ export async function PATCH(req) {
         })
     })
     if(!decoded) return NextResponse.json({message:"Not Found"})
-    //console.log(decoded);
     connectDB();
     let user = await User.findById(decoded.id)
-    //console.log(user);
     if(!user) return NextResponse.json({message: "Not Found", user:null})
     if(user && user._id.toString() === decoded.id) {
         return NextResponse.json({message: "Found", user:{username:user.username, chats:user.chats, token:token}});

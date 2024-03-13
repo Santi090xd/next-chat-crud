@@ -22,7 +22,6 @@ export const TaskProvider = ({ children })=>{
             })
             .then(async res => await res.json())
             .then(response => {
-                console.log(response.message);
                 if (response.message === "Found" && response.user.username) {
                     setUser({username:response.user.username, chats:response.user.chats});
                 } else if (response.message === "Not Found") {
