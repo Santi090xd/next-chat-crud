@@ -8,10 +8,10 @@ import socket from '@/utils/socket.js'
 export default function NavLeft() {
   const {users, setusers, user} = useContext(TaskContext)
 
-  let handleUsers = (usuarios)=>{
-    setusers(usuarios.filter(a => a != user.username))
-  }
   useEffect(() => {
+    let handleUsers = (usuarios)=>{
+      setusers(usuarios.filter(a => a != user.username))
+    }
     socket.on("usersList", handleUsers)
     return () => {
       socket.off("users", handleUsers)
