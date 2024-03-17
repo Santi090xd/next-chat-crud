@@ -9,14 +9,15 @@ export default function NavLeft() {
   const {users, setusers, user} = useContext(TaskContext)
 
   useEffect(() => {
-    let handleUsers = (usuarios)=>{
+    const handleUsers = (usuarios)=>{
       setusers(usuarios.filter(a => a != user.username))
-    }
-    socket.on("usersList", handleUsers)
+    };
+    socket.on("usersList", handleUsers);
     return () => {
-      socket.off("users", handleUsers)
+      socket.off("users", handleUsers);
     }
-  }, [users])
+  }, [users, setusers, user.username])
+  
   
 
   return (

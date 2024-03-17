@@ -6,10 +6,10 @@ import Cookies from "js-cookie";
 
 export default function SignUpForm() {
   const router = useRouter();
-  if(Cookies.get("token")) return location.pathname = "/"
     const [user, setUser] = useState({ username: "", password: "" });
     const [sending, setSending] = useState(false);
     const [error, setError] = useState("");
+    if(Cookies.get("token")) location.pathname = "/";
 
     useEffect(() => {
         if (error === "this user already exists") {

@@ -6,11 +6,11 @@ import Cookies from 'js-cookie';
 
 const Login = () => {
   const router = useRouter();
-  if(document && document.cookie?.replace(/(?:(?:^|.*;\s*)token\s*\=\s*([^;]*).*$)|^.*$/, "$1")) return location.pathname = "/"
   const [user, setUser] = useState({ username: "", password: "" });
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
   const [redirect, setRedirect] = useState(false);
+  if(Cookies.get("token")) location.pathname = "/";
 
   useEffect(()=>{
     if(redirect){

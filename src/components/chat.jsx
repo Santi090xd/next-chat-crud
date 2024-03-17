@@ -21,12 +21,12 @@ export default function Chat({talkedUser}) {
     }, [user, talkedUser])
     useEffect(()=>{
       if(redirect) router.push("/")
-    }, [redirect])
+    }, [redirect, router])
     useEffect(()=>{
       if(user && user.username){
         socket.emit("chatMessagesList", {talkedUser, user:user.username})
       }
-    }, [users, talkedUser])
+    }, [users, talkedUser, user])
     useEffect(() => {
       const getMessagesList = (msjs)=>{
         setUser((usuario) =>({...usuario, chats:[...usuario.chats, {[talkedUser]:msjs}]}))
@@ -48,10 +48,10 @@ export default function Chat({talkedUser}) {
         socket.off("chatMessagesList", getMessagesList)
         socket.off("chatMessage", enviarMsg)
       }
-    }, [user])
+    }, [user, setUser, talkedUser])
     useEffect(()=>{
       if(user.username) document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
-    }, [messages])
+    }, [messages, user.username])
   return (
     user.username && (<div className='chatCont'>
     <form className='chatForm' onSubmit={(e)=>{

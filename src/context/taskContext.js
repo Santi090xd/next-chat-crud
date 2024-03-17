@@ -30,7 +30,7 @@ export const TaskProvider = ({ children })=>{
                 }
             });
         }
-    }, []);
+    }, [user.username]);
 
     return (
         <TaskContext.Provider value={{
