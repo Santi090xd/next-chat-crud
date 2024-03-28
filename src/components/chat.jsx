@@ -33,7 +33,6 @@ export default function Chat({talkedUser}) {
         setUser((usuario) =>({...usuario, chats:[...usuario.chats, {[talkedUser]:msjs}]}))
         if(msjs.talkedUser == talkedUser) {
           setMessages(msjs.chat)
-          document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
         }
       }
       const enviarMsg = (msg)=>{
@@ -53,6 +52,11 @@ export default function Chat({talkedUser}) {
         socket.off("chatMessage", enviarMsg)
       }
     }, [user, setUser, talkedUser])
+
+    useEffect(()=>{
+      if(messages) document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
+    }, [messages])
+
   return (
     user.username && (<div className='chatCont'>
     <form className='chatForm' onSubmit={(e)=>{
