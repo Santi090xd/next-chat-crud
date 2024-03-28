@@ -30,10 +30,12 @@ export default function Chat({talkedUser}) {
     useEffect(() => {
       const getMessagesList = (msjs)=>{
         setUser((usuario) =>({...usuario, chats:[...usuario.chats, {[talkedUser]:msjs}]}))
-        if(msjs.talkedUser == talkedUser) setMessages(msjs.chat)
+        if(msjs.talkedUser == talkedUser) {
+          setMessages(msjs.chat)
+          document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
+        }
       }
       const enviarMsg = (msg)=>{
-        document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
         if(msg == "Not Found"){
           setError(true)
           setTimeout(() => {
