@@ -26,7 +26,7 @@ export default function Chat({talkedUser}) {
       if(user && user.username){
         socket.emit("chatMessagesList", {talkedUser, user:user.username})
       }
-    }, [users, talkedUser, user])
+    }, [talkedUser, user])
     useEffect(() => {
       const getMessagesList = (msjs)=>{
         setUser((usuario) =>({...usuario, chats:[...usuario.chats, {[talkedUser]:msjs}]}))
