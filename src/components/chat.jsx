@@ -49,9 +49,8 @@ export default function Chat({talkedUser}) {
         socket.off("chatMessage", enviarMsg)
       }
     }, [user, setUser, talkedUser])
-    useEffect(()=>{
-      if(user.username) document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
-    }, [messages, user.username])
+    useEffect(()=>document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight
+    , [messages])
   return (
     user.username && (<div className='chatCont'>
     <form className='chatForm' onSubmit={(e)=>{
