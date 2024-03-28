@@ -54,7 +54,7 @@ export default function Chat({talkedUser}) {
     }, [user, setUser, talkedUser])
 
     useEffect(()=>{
-      if(messages) document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
+      if(messages && document.getElementById("chat")) document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
     }, [messages])
 
   return (
