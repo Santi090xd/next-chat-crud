@@ -33,6 +33,7 @@ export default function Chat({talkedUser}) {
         if(msjs.talkedUser == talkedUser) setMessages(msjs.chat)
       }
       const enviarMsg = (msg)=>{
+        document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
         if(msg == "Not Found"){
           setError(true)
           setTimeout(() => {
@@ -49,10 +50,6 @@ export default function Chat({talkedUser}) {
         socket.off("chatMessage", enviarMsg)
       }
     }, [user, setUser, talkedUser])
-    useEffect(()=>{
-      if(messages)document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
-    }
-    , [messages])
   return (
     user.username && (<div className='chatCont'>
     <form className='chatForm' onSubmit={(e)=>{
