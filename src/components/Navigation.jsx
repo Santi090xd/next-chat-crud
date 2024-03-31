@@ -36,7 +36,6 @@ export default function Navigation() {
                 </>
             ) : (
                 <>
-                    <h1>hola xd</h1>
                     <button className='loginBtn'>
                         <Link href="/login">Login</Link>
                     </button>
