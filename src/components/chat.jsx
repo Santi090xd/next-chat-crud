@@ -10,7 +10,7 @@ export default function Chat({talkedUser}) {
   const [redirect, setRedirect] = useState(false);
   const {user, users, setUser} = useContext(TaskContext)
   const router = useRouter();
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState(user?.chats.find(ch => ch.talkedUser == talkedUser)?.chat || [])
   const [message, setMessage] = useState("")
   const [sending, setSending] = useState(false)
   const [Error, setError] = useState(false)
@@ -24,26 +24,28 @@ export default function Chat({talkedUser}) {
     }, [redirect, router])
     useEffect(()=>{
       if(user && user.username){
-        socket.emit("chatMessagesList", {talkedUser, user:user.username})
-        console.log("a");
+        try {
+          socket.emit("chatMessagesList", {talkedUser, user:user.username})
+        } catch (error) {
+        }
       }
     }, [talkedUser, user.username])
     useEffect(() => {
       const getMessagesList = (msjs)=>{
+        if(msjs == "Not Found"){
+          setError(true)
+          setTimeout(() => {
+            setRedirect(true)
+          }, 2000);
+        }
         setUser((usuario) =>({...usuario, chats:[...usuario.chats, {[talkedUser]:msjs}]}))
         if(msjs.talkedUser == talkedUser) {
           setMessages(msjs.chat)
         }
       }
       const enviarMsg = (msg)=>{
-        if(msg == "Not Found"){
-          setError(true)
-          setTimeout(() => {
-            setRedirect(true)
-          }, 2000);
-        }
+        
         setSending(false);
-        setMessages((mensajes)=>[...mensajes, msg])
       }
       socket.on("chatMessagesList", getMessagesList)
       socket.on("chatMessage", enviarMsg)
@@ -73,7 +75,7 @@ export default function Chat({talkedUser}) {
           <h1>Error 404 Not Found!</h1>
           <p>redirecting to the main page...</p>
           </div>) : (<></>)}
-            {messages.map((msj, i)=>(
+            {(messages).map((msj, i)=>(
                   <li key={i} className={`message${msj.user == user.username ? " author" : ""}`} id={`message${i}`}>
                     <div className='flex-msg'>
                     <div className={`msg${msj.user == user.username ? " Author" : " nAuthor"}`}>

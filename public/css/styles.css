@@ -3,9 +3,15 @@
     margin: 0;
     box-sizing: border-box;
 }
+:root{
+    --backgroundColor: #202026;
+    --scrollBarColor: #3d3d3d;
+    --textColor: White;
+
+}
 
 body{
-    background-color: #202026;
+    background-color: var(--backgroundColor);
     font-family: 'Inter',sans-serif;
     overflow: hidden;
 }
@@ -16,99 +22,15 @@ body{
 }
 
 ::-webkit-scrollbar-thumb{
-    background-color: #3d3d3d;
+    background-color: var(--scrollBarColor);
     border-radius: 3.5px;
 }
 
 a,b,p,h1,h2,h3,h4,h5,h6,text,textarea,input,strong, Link{
-    color: white;
+    color: var(--textColor);
     font-family: 'Inter',sans-serif;
+    text-decoration: none;
   }
-
-#logIn{
-    position: absolute;
-    z-index: 10000;
-    width: 100%;
-    height: 100%;
-}
-.formCont{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    width: 500px;
-    height: 100vh;
-    opacity: 100%;
-}
-.form{
-    width: 430px;
-    height: auto;
-    background-color: #282830;
-    border-radius: 20px;
-    position: relative;
-    padding: 40px 50px;
-}
-.baseCont{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.exitBtn{
-    display: flex;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    border-radius: 10px;
-}
-.title{
-    margin: auto;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    font-weight: 500;
-    margin-right: 20px;
-}
-.username, .password{
-    display: flex;
-    width: 100%;
-    padding: 10px 0px;
-    padding-left: 10px;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    background-color: #32323D;
-    margin-top: 15px;
-}
-#send{
-    display: flex;
-    width: 100%;
-    padding: 8px 0px;
-    text-align: center;
-    justify-content: center;
-    border-radius: 10px;
-    margin-top: 25px;
-    align-items: center;
-    background-color: #32323D;
-    border: none;
-    color: #fff;
-}
-#send:hover{
-    transition: all 0.3s ease-in-out;
-    color: #000;
-    background: #09efffc5;
-    filter: drop-shadow(0px 0px 10px #09efff);
-}
-
-.loginBtn, .signUpBtn{
-    background-color: var(--object3);
-    padding: 7px 10px;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    font-size: 14px;
-    cursor: pointer;
-    font-weight: 500;
-}
 
 #notFoundMsg, #errorMsg{
     color: #c20202;
@@ -118,128 +40,3 @@ a,b,p,h1,h2,h3,h4,h5,h6,text,textarea,input,strong, Link{
     filter: drop-shadow(0px 0px 10px #cc0202);
 }
 
-nav{
-    display: flex;
-    padding: 10px;
-    justify-content: space-between;
-}
-.nav-log-out{
-    padding: 3px 10px;
-    border: none;
-    background-color: #32323D;
-    color: #fff;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.nav-log-out:hover{
-    transition: all 0.3s ease-in-out;
-    color: #000;
-    background-color: #09efff;
-    filter: drop-shadow(0px 0px 10px #09efff);
-}
-
-.chatCont{
-    display: flex;
-    background-color: #282830;
-    height: calc(100vh - 44px);
-    padding: 15px;
-    border-radius: 5px;
-    width: 100%;
-    justify-content: center;
-    margin: auto;
-}
-
-.chatForm{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.chatTitle{
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid #4d4d4d75;
-    /* box-shadow: 0px 3px 10px 1px #00000057; */
-    margin-bottom: 10px;
-}
-
-ul{
-    list-style-type: none;
-    overflow-y: auto;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 0px 10px;
-}
-
-.flex-msg{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    word-break: break-all;
-    max-width: 75%;
-}
-
-.msg{
-    padding: 10px;
-    border-radius: 10px;
-    height: 100%;
-}
-.Author{
-    background-color: #038d97;
-}
-.nAuthor{
-    background-color: #3d3d3d;
-}
-
-.inputChat{
-    display: flex;
-    width: 100%;
-    padding: 10px 0px;
-    padding-left: 10px;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    background-color: #32323D;
-    margin-top: 15px;
-}
-
-.message{
-    display: flex;
-    color: #fff;
-}
-.author{
-    justify-content: flex-end;
-}
-.msgUser{
-    opacity: 50%;
-    text-decoration: underline;
-    font-size: small;
-}
-.navLeft{
-    display: flex;
-    flex-direction: column;
-    background-color: #202026;
-    width: 192.406px;
-    min-width: 230px;
-    height: calc(100vh - 45px);
-    min-height: calc(100vh - 45px);
-    overflow-y: auto;
-    padding: 0px 19px;
-    position: sticky;
-    top: 0;
-    left: 0;
-    bottom: 0;
-}
-
-.flex-user{
-    display: flex;
-    background-color: #32323D;
-    padding: 10px;
-    border-radius: 5px;
-}

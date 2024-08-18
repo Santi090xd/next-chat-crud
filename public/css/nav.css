@@ -1,0 +1,56 @@
+nav{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.homePage{
+    display: flex;
+    padding: 10px 2%;
+}
+
+.Chat-title{
+    background-color: #FFB800;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.chat-nav{
+    width: 100%;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.nav-log-out{
+    padding: 3px 10px;
+    border: none;
+    background-color: #32323D;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.nav-log-out:hover{
+    transition: all 0.3s ease-in-out;
+    color: #000;
+    background-color: #09efff;
+    filter: drop-shadow(0px 0px 10px #09efff);
+}
+
+.signButtons{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.loginBtn, .signUpBtn{
+    background-color: var(--object3);
+    padding: 7px 10px;
+    border-radius: 5px;
+    border: none;
+    color: var(--textColor);
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+}

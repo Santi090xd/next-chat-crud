@@ -11,18 +11,22 @@ export default models.users || model("users", new Schema({
         unique: true,
         required: true
     },
+    connections:{
+        type:[String]
+    },
     chats: [{
         username: String,
+        read: {
+            type:Boolean,
+            default:false
+        },
         messages: [{
             content: String,
             user: String,
             id:String,
             timestamp: Date
         }]
-    }],
-    connections:{
-        type:[String]
-    }
+    }]
 }, {
     timestamps:true
 }))

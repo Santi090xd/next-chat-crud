@@ -28,21 +28,20 @@ export default function Navigation() {
     
     return (
         <div className='homePage'>
+            <h1 className='Next-title'>Next<span className='Chat-title'>Chat</span></h1>
             {user.username && Cookies.get("token") ? (
                 <>
-                    <nav>
                     <Header user={user}/>
-                    </nav>
                 </>
             ) : (
-                <>
+                <div className='signButtons'>
                     <button className='loginBtn'>
                         <Link href="/login">Login</Link>
                     </button>
                     <button className='signUpBtn'>
                         <Link href="/signup"> Sign up</Link>
                     </button>
-                </>
+                </div>
             )}
         </div>
     )

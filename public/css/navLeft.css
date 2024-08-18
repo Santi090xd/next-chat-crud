@@ -1,0 +1,41 @@
+.navLeft{
+    display: flex;
+    flex-direction: column;
+    background-color: #202026;
+    width: 192.406px;
+    min-width: 230px;
+    height: calc(100vh - 45px);
+    min-height: calc(100vh - 45px);
+    overflow-y: auto;
+    padding: 0px 19px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.flex-user{
+    display: flex;
+    background-color: #32323D;
+    padding: 10px;
+    border-radius: 5px;
+    gap: 7px;
+    align-items: center;
+}
+
+.chatUsername{
+    color: #bbbbbb;
+    text-decoration: none;
+}
+
+.chatNewMsg{
+    color: #fff;
+}
+
+.userConnectionState{
+    display: flex;
+    background-color: #c20202;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 0.25rem;
+}

@@ -74,6 +74,12 @@ export async function PATCH(req) {
     let user = await User.findById(decoded.id)
     if(!user) return NextResponse.json({message: "Not Found", user:null})
     if(user && user._id.toString() === decoded.id) {
-        return NextResponse.json({message: "Found", user:{username:user.username, chats:user.chats, token:token}});
+        return NextResponse.json({message: "Found", user:{username:user.username, chats:user.chats.map(chat => {
+            return {
+                talkedUser: chat.username,
+                read: chat.read,
+                chat: chat.messages.map(msg => ({content:msg.content, user:msg.user, timestamp:msg.timestamp}))
+            }
+        }), token:token}});
     }
 }
